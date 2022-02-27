@@ -11,6 +11,7 @@ using CitablePhysicalText
 using CitableText
 
 export passage
+export mspage
 
 include("passage.jl")
 
