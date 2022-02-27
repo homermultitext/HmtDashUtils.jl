@@ -1,5 +1,17 @@
 module HmtDashUtils
+using Dash
+using Documenter, DocStringExtensions
 
-greet() = print("Hello World!")
+using CitableAnnotations
+using CitableBase
+using CitableCorpus
+using CitableImage
+using CitableObject
+using CitablePhysicalText
+using CitableText
+
+export passage
+
+include("passage.jl")
 
 end # module
