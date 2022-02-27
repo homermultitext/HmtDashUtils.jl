@@ -1,0 +1,11 @@
+name = "HmtDashUtils"
+uuid = "56120bdb-dd5b-43f0-8d83-690e170361e4"
+authors = ["Neel Smith <dnsmith.neel@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Dash = "1b08a953-4be3-4667-9a23-3db579824955"
+
+[compat]
+Dash = "1"
+julia = "1"
