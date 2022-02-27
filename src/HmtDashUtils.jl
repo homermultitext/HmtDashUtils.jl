@@ -10,8 +10,8 @@ using CitableObject
 using CitablePhysicalText
 using CitableText
 
-export passage
-export mspage
+export dash_passage
+export dash_mspage
 
 include("passage.jl")
 

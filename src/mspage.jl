@@ -1,5 +1,5 @@
 
-function page(pg::Cite2Urn, dse::DseCollection ; 
+function dash_mspage(pg::Cite2Urn, dse::DseCollection ; 
     corpus = nothing,
     commentary = nothing,
     annotations = nothing

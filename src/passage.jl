@@ -3,9 +3,8 @@
 in a Dash html container element.
 $(SIGNATURES)
 """
-function passage(
-    u::CtsUrn, 
-    corpus::CitableTextCorpus; 
+function dash_passage(
+    u::CtsUrn, passages::Vector{CitablePassage};
     dse = nothing, 
     commentary = nothing,
     annotations = nothing,
@@ -15,13 +14,13 @@ function passage(
     )
 
     #if false == images == multiforms
-        simpletext(u, corpus, citations)
+        simpletext(u, passages, citations)
     #end
 end
 
 
-function simpletext(u::CtsUrn,corpus::CitableTextCorpus, cites = false)
-    psgs = filter(psg -> urncontains(u, urn(psg)), corpus)
+function simpletext(u::CtsUrn, allpassages::Vector{CitablePassage}, cites = false)
+    psgs = filter(psg -> urncontains(u, urn(psg)), allpassages)
     formatted = []
     for psg in psgs
         if cites
