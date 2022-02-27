@@ -5,6 +5,7 @@
         psg -> endswith(workcomponent(psg.urn), "normalized"),
         corpus.passages)
 
-    dse =     
+    psg1 = CtsUrn("urn:cts:greekLit:tlg0012.tlg001.msA:1.1")    
+    
 
 end
