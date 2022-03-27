@@ -35,6 +35,8 @@ function simpletext(u::CtsUrn, psgs::Vector{CitablePassage})
 end
 
 
+
+## COMPUTE PASSAGE LABEL (if any) FOR EACH PASSAGE IN THIS LOOP
 """Format markdown for all citable passages in `psgs` identified by `urns`.
 $(SIGNATURES)
 """ 
