@@ -12,7 +12,11 @@ function simpletext(u::CtsUrn, psgs::Vector{CitablePassage})
     selected = filter(psg -> urncontains(u, urn(psg)), psgs)
     formatted = []
     for psg in selected
-        push!(formatted, psg.text)
+        if endswith(passagecomponent(psg.urn), "lemma")
+            push!(formatted, "**" * psg.text * "**")
+        else
+            push!(formatted, psg.text)
+        end
     end
     join(formatted, "\n")
 end

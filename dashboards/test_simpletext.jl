@@ -65,4 +65,4 @@ app.layout = html_div(className = "w3-container") do
 end
 
 
-run_server(app, "0.0.0.0", debug=true)
+run_server(app, "0.0.0.0", 8051, debug=true)
