@@ -10,9 +10,9 @@ using CitableObject
 using CitablePhysicalText
 using CitableText
 
-export dash_passage
-export dash_mspage
-
+#export dash_passage
+#export dash_mspage
+export simpletext
 include("passage.jl")
 
 end # module

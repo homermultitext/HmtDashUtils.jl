@@ -19,16 +19,35 @@ function dash_passage(
 end
 
 
-function simpletext(u::CtsUrn, allpassages::Vector{CitablePassage}, cites = false)
-    psgs = filter(psg -> urncontains(u, urn(psg)), allpassages)
+
+"""Format markdown for citable passages in `psgs` identified by `u`.
+$(SIGNATURES)
+"""
+function simpletext(u::CtsUrn, psgs::Vector{CitablePassage})
+    selected = filter(psg -> urncontains(u, urn(psg)), psgs)
     formatted = []
-    for psg in psgs
-        if cites
-            txt = passagecomponent(urn(psg))  * " " * psg.text
-            push!(formatted, txt)
-        else
-            push!(formatted, psg.text)
-        end
+    for psg in selected
+        push!(formatted, psg.text)
     end
-    formatted
+    join(formatted, "\n")
+end
+
+
+"""Format markdown for all citable passages in `psgs` identified by `urns`.
+$(SIGNATURES)
+"""
+function simpletext(urns::Vector{CtsUrn}, psgs::Vector{CitablePassage})
+    md  = []
+    for u in urns
+        push!(md, simpletext(u, psgs))
+    end
+    join(md, "\n")
+end
+
+
+"""Format markdown for all citable passages in `c` identified by `urns`.
+$(SIGNATURES)
+"""
+function simpletext(urns::Vector{CtsUrn}, c::CitableTextCorpus)
+    simpletext(urns, c.passages)
 end
