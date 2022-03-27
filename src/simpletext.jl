@@ -24,7 +24,7 @@ end
 
 """Format markdown for all citable passages in `psgs` identified by `urns`.
 $(SIGNATURES)
-"""
+""" 
 function simpletext(urns::Vector{CtsUrn}, psgs::Vector{CitablePassage}, catalog::TextCatalogCollection)
     
     currenttext = urns[1] |> droppassage
