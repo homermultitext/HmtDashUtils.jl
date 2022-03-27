@@ -29,7 +29,7 @@ TEXTHEIGHT = 600
 
 
 
-function loaddata()
+function loaddata() 
     src = hmt_cex()
     normed = hmt_normalized(src)
     triples = hmt_dse(src)[1].data
@@ -60,7 +60,7 @@ app.layout = html_div(className = "w3-container") do
     dcc_markdown("Formatting selection of $(length(textsample)) passages occurring on folio 12 recto of the Venetus A."),
    
     html_div(className = "w3-container",
-        dcc_markdown("$(simpletext(textsample, corpus, catalog))")
+        dcc_markdown(simpletext(textsample, corpus, catalog))
     )
 end
 

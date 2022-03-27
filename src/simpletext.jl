@@ -5,6 +5,8 @@ function textheader(catentry::CatalogedText; level = 3)
 end
 
 
+
+## MOVE LABEL FORMATTING OUT OF HERE INTO WRAPPING LOOP: PASS IN LABEL AS PARAM HERE.
 """Format markdown for citable passages in `psgs` identified by `u`.
 $(SIGNATURES)
 """
@@ -12,10 +14,21 @@ function simpletext(u::CtsUrn, psgs::Vector{CitablePassage})
     selected = filter(psg -> urncontains(u, urn(psg)), psgs)
     formatted = []
     for psg in selected
-        if endswith(passagecomponent(psg.urn), "lemma")
-            push!(formatted, "**" * psg.text * "**")
+        if isempty(psg.text)
+            # do nothing
         else
-            push!(formatted, psg.text)
+            lbl = ""
+            if HmtArchive.Analysis.isscholion(u)
+                # ...
+                lbl = "(scholion)"
+            else
+                lbl = passagecomponent(u)
+            end
+            if endswith(passagecomponent(psg.urn), "lemma")
+                push!(formatted, "`$(lbl)` **" * psg.text * "**")
+            else
+                push!(formatted, "`$(lbl)` " * psg.text)
+            end
         end
     end
     join(formatted, "\n")

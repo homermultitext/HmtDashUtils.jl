@@ -9,6 +9,7 @@ using CitableImage
 using CitableObject
 using CitablePhysicalText
 using CitableText
+using HmtArchive, HmtArchive.Analysis
 
 export simpletext
 
