@@ -33,15 +33,15 @@ function loaddata()
     src = hmt_cex()
     normed = hmt_normalized(src)
     triples = hmt_dse(src)[1].data
-
+    textcat = hmt_textcatalog(src)
     demopage = Cite2Urn("urn:cite2:hmt:msA.v1:12r")
     sampletriples = filter(tr -> tr.surface == demopage, triples)
     urnlist = map(tr -> tr.passage,sampletriples)
     
     info = hmt_releaseinfo(src)
-    (normed, info, urnlist)
+    (normed, textcat, info, urnlist)
 end
-(corpus, release, textsample) = loaddata()
+(corpus, catalog, release, textsample) = loaddata()
 
 
 
@@ -60,7 +60,7 @@ app.layout = html_div(className = "w3-container") do
     dcc_markdown("Formatting selection of $(length(textsample)) passages occurring on folio 12 recto of the Venetus A."),
    
     html_div(className = "w3-container",
-        dcc_markdown(simpletext(textsample, corpus))
+        dcc_markdown("$(simpletext(textsample, corpus, catalog))")
     )
 end
 
