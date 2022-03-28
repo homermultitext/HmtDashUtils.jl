@@ -1,7 +1,9 @@
+
+
 """Format markdown for citable passages in `psgs` identified by `u`.
 $(SIGNATURES)
 """
-function md_simpletext(u::CtsUrn, psgs::Vector{CitablePassage})
+function md_illustratedtext(u::CtsUrn, psgs::Vector{CitablePassage})
     re  = string(u) * "(\\.lemma|\\.comment)*\$" |> Regex
     selected = filter(p -> ! isnothing(match(re, string(p.urn))), psgs)
 
@@ -29,11 +31,10 @@ function md_simpletext(u::CtsUrn, psgs::Vector{CitablePassage})
 end
 
 
-
 """Format markdown for all citable passages in `psgs` identified by `urns`.
 $(SIGNATURES)
 """ 
-function md_simpletext(rawurns::Vector{CtsUrn}, rawpassages::Vector{CitablePassage}, catalog::TextCatalogCollection)    
+function md_illustratedtext(rawurns::Vector{CtsUrn}, rawpassages::Vector{CitablePassage}, catalog::TextCatalogCollection)    
     
     # Convert URNs to HMT normal form so we can 
     # subsequently optimize by comparing on strings
@@ -63,7 +64,7 @@ function md_simpletext(rawurns::Vector{CtsUrn}, rawpassages::Vector{CitablePassa
             end
             currenttext = droppassage(u)
         end
-        push!(md, md_simpletext(u, psgs))
+        push!(md, md_illustratedtext(u, psgs))
     end
     join(md, "\n\n")
 end
@@ -72,6 +73,6 @@ end
 """Format markdown for all citable passages in `c` identified by `urns`.
 $(SIGNATURES)
 """
-function md_simpletext(urns::Vector{CtsUrn}, c::CitableTextCorpus, catalog::TextCatalogCollection)
+function md_illustratedtext(urns::Vector{CtsUrn}, c::CitableTextCorpus, catalog::TextCatalogCollection)
     md_simpletext(urns, c.passages, catalog)
 end
