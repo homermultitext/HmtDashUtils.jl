@@ -18,12 +18,9 @@ HmtArchive = "1e7b0059-6550-4515-8382-5d3f2046a0a7"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
-CitableAnnotations = "0.3"
 CitableBase = "10"
 CitableCorpus = "0.12"
-CitableImage = "0.6"
 CitableObject = "0.15"
-CitablePhysicalText = "0.9"
 CitableText = "0.15"
 Dash = "1"
 DocStringExtensions = "0.8"
