@@ -13,7 +13,7 @@ using HmtArchive, HmtArchive.Analysis
 
 
 export md_textpassages
-export md_simpletext, ms_illustratedtext
+export md_simpletext, md_illustratedtext
 export md_dseoverview
 
 include("constants.jl")

@@ -36,7 +36,12 @@ end
 """Format markdown for all citable passages in `psgs` identified by `urns`.
 $(SIGNATURES)
 """ 
-function md_textpassages(rawurns::Vector{CtsUrn}, rawpassages::Vector{CitablePassage}, catalog::TextCatalogCollection;  mode = :simpletext)    
+function md_textpassages(
+    rawurns::Vector{CtsUrn}, rawpassages::Vector{CitablePassage}, catalog::TextCatalogCollection;  
+    mode = "simpletext",
+    triples = Vector{DSETriple}[],
+    height = 600
+    )    
     
     # Convert URNs to HMT normal form so we can 
     # subsequently optimize by comparing on strings
@@ -70,6 +75,10 @@ function md_textpassages(rawurns::Vector{CtsUrn}, rawpassages::Vector{CitablePas
         # Switch on mode!
         if mode == "simpletext"
             push!(md, md_simpletext(u, psgs))
+
+        elseif mode == "illustratedtext"
+            @debug("Display mode = illustratedtext")
+            push!(md, md_illustratedtext(u, psgs, triples, height = height))
         else
             push!(md, "UNRECOGNIZED/UNSUPPORTED MODE: $(mode) ($(u))")
         end
@@ -81,6 +90,11 @@ end
 """Format markdown for all citable passages in `c` identified by `urns`.
 $(SIGNATURES)
 """
-function md_textpassages(urns::Vector{CtsUrn}, c::CitableTextCorpus, catalog::TextCatalogCollection; mode = "simpletext")
-    md_textpassages(urns, c.passages, catalog, mode = mode)
+function md_textpassages(
+    urns::Vector{CtsUrn}, c::CitableTextCorpus, catalog::TextCatalogCollection; 
+    mode = "simpletext",
+    triples = Vector{DSETriple}[],
+    height = 600
+    )
+    md_textpassages(urns, c.passages, catalog, mode = mode, triples = triples, height = height)
 end
