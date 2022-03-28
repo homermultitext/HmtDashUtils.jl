@@ -18,8 +18,8 @@ using CitableBase
 using CitableText
 using CitableCorpus
 using CitableObject
-using CitableImage
-using CitablePhysicalText
+#using CitableImage
+#using CitablePhysicalText
 using HmtArchive, HmtArchive.Analysis
 #using Orthography
 
