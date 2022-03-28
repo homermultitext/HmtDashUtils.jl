@@ -20,11 +20,6 @@ using CitableCorpus
 using CitableObject
 using HmtArchive, HmtArchive.Analysis
 
-THUMBHEIGHT = 200
-TEXTHEIGHT = 600
-
-
-
 function loaddata() 
     src = hmt_cex()
     normed = hmt_normalized(src)
@@ -35,9 +30,9 @@ function loaddata()
     urnlist = map(tr -> tr.passage,sampletriples)
     
     info = hmt_releaseinfo(src)
-    (normed, textcat, info, urnlist)
+    (normed, textcat, triples, info, urnlist)
 end
-(corpus, catalog, release, sampleurns) = loaddata()
+(corpus, catalog, dse, release, sampleurns) = loaddata()
 
 
 
@@ -48,12 +43,12 @@ app.layout = html_div(className = "w3-container") do
 
     
     html_h1(
-        dcc_markdown("`HmtDashUtils`: simple text display")),
+        dcc_markdown("`HmtDashUtils`: display illustrated text passages")),
     dcc_markdown("Test/demo using data loaded from **$(release)**."),
     dcc_markdown("Formatting selection of $(length(sampleurns)) passages occurring on folio 12 recto of the Venetus A."),
    
     html_div(className = "w3-container",
-        dcc_markdown(md_textpassages(sampleurns, corpus, catalog))
+        dcc_markdown(md_textpassages(sampleurns, corpus, catalog, triples = dse, mode = "illustratedtext"))
     )
 end
 
