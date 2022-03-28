@@ -53,7 +53,7 @@ app.layout = html_div(className = "w3-container") do
     dcc_markdown("Formatting selection of $(length(sampleurns)) passages occurring on folio 12 recto of the Venetus A."),
    
     html_div(className = "w3-container",
-        dcc_markdown(md_simpletext(sampleurns, corpus, catalog))
+        dcc_markdown(md_textpassages(sampleurns, corpus, catalog))
     )
 end
 
