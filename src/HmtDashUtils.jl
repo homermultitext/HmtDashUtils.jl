@@ -11,8 +11,11 @@ using CitablePhysicalText
 using CitableText
 using HmtArchive, HmtArchive.Analysis
 
-export simpletext
+export md_simpletext
+export md_dseoverview
 
+include("constants.jl")
 include("simpletext.jl")
+include("dseoverview.jl")
 
 end # module

@@ -1,7 +1,7 @@
 name = "HmtDashUtils"
 uuid = "56120bdb-dd5b-43f0-8d83-690e170361e4"
 authors = ["Neel Smith <dnsmith.neel@gmail.com>"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 CitableAnnotations = "63f90415-d3ea-41a7-8107-8cc186a9b888"

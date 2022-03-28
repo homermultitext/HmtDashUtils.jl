@@ -1,7 +1,7 @@
 #= 
 Run from root directory of repository like this:
 
-     julia --project=dashboards/ dashboards/simpletext.jl
+     julia --project=dashboards/ dashboards/test_simpletext.jl
 =#
 using Pkg
 Pkg.activate(pwd())
@@ -41,7 +41,7 @@ function loaddata()
     info = hmt_releaseinfo(src)
     (normed, textcat, info, urnlist)
 end
-(corpus, catalog, release, textsample) = loaddata()
+(corpus, catalog, release, sampleurns) = loaddata()
 
 
 
@@ -57,12 +57,12 @@ app.layout = html_div(className = "w3-container") do
     
     html_h1("`HmtDashUtils`: simple text display"),
     dcc_markdown("Test/demo using data loaded from **$(release)**."),
-    dcc_markdown("Formatting selection of $(length(textsample)) passages occurring on folio 12 recto of the Venetus A."),
+    dcc_markdown("Formatting selection of $(length(sampleurns)) passages occurring on folio 12 recto of the Venetus A."),
    
     html_div(className = "w3-container",
-        dcc_markdown(simpletext(textsample, corpus, catalog))
+        dcc_markdown(md_simpletext(sampleurns, corpus, catalog))
     )
 end
 
 
-run_server(app, "0.0.0.0", 8051, debug=true)
+run_server(app, "0.0.0.0", debug=true)
