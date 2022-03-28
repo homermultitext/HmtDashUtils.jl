@@ -18,11 +18,7 @@ using CitableBase
 using CitableText
 using CitableCorpus
 using CitableObject
-#using CitableImage
-#using CitablePhysicalText
 using HmtArchive, HmtArchive.Analysis
-#using Orthography
-
 
 THUMBHEIGHT = 200
 TEXTHEIGHT = 600
@@ -55,7 +51,8 @@ app.layout = html_div(className = "w3-container") do
         ]
     ),
     
-    html_h1("`HmtDashUtils`: simple text display"),
+    html_h1(
+        dcc_markdown("`HmtDashUtils`: simple text display")),
     dcc_markdown("Test/demo using data loaded from **$(release)**."),
     dcc_markdown("Formatting selection of $(length(sampleurns)) passages occurring on folio 12 recto of the Venetus A."),
    

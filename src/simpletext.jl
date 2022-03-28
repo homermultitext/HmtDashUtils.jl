@@ -14,8 +14,15 @@ $(SIGNATURES)
 function md_simpletext(u::CtsUrn, psgs::Vector{CitablePassage})
     # Optimize search time: requires that workcomponents be identical.
     #selected = filter(psg -> urncontains(u, urn(psg)), psgs)
-    selected = filter(psg -> startswith(string(psg.urn), string(u)), psgs)
- 
+    
+    
+    
+    
+    
+    #selected = filter(psg -> startswith(string(psg.urn), string(u), psgs)
+
+    re  = string(u) * "(\\.lemma|\\.comment)*\$" |> Regex
+    selected = filter(p -> ! isnothing(match(re, string(p.urn))), psgs)
 
     formatted = []
     for psg in selected
